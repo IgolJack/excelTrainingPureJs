@@ -3,11 +3,16 @@ const CODES = {
   Z: 90,
 }
 
-function createCell(count) {
+function createCell(count, rowId) {
   const $cell = []
   for (let i = 0; i <= count; i++) {
     $cell.push(`
-     <div class="cell" contenteditable></div>
+     <div 
+     class="cell" 
+     contenteditable 
+     data-cell-col-id="${i}"
+     data-cell-row-id="${rowId}"
+     ></div>
     `)
   }
   return $cell.join('')
@@ -16,15 +21,30 @@ function createCell(count) {
 function createCol() {
   const $col = []
   for (let i = CODES.A; i <= CODES.Z; i++) {
-    $col.push(`<div class="column">${String.fromCharCode(i)}</div>`)
+    $col.push(`
+      <div 
+      class="column" 
+      data-type="resizable" 
+      data-id-object="${i - CODES.A}"
+      >
+          ${String.fromCharCode(i)}
+           <div class="col-resize" data-resize="col"></div>
+      </div>
+    `)
   }
   return $col.join('')
 }
 
 function createRow(numberOfRow, HtmlData) {
+  const res = '<div class="row-resize" data-resize="row"></div>'
   return `
-  <div class="row">
-      <div class="row-info">${numberOfRow ? numberOfRow : ''}</div>
+  <div class="row" data-id-object="${numberOfRow}" data-type="resizable">
+      <div 
+      class="row-info" 
+      >
+        ${numberOfRow ? numberOfRow : ''}
+        ${numberOfRow ? res : ''}
+      </div>
         <div class="row-data">
          ${HtmlData}
         </div>
@@ -39,7 +59,7 @@ export function createTable(rowsCount = 60) {
   for (let i = 0; i <= rowsCount; i++) {
     i === 0
     ? $rows.push(createRow(null, createCol()))
-    : $rows.push(createRow(i, createCell(colsCount)))
+    : $rows.push(createRow(i, createCell(colsCount, i)))
   }
   return $rows.join('')
 }
