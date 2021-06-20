@@ -12,8 +12,6 @@ const target = isDev ? 'web' : 'browserlist'
 
 const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`
 
-console.log(isDev)
-
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
