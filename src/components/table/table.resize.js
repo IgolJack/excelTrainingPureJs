@@ -21,6 +21,7 @@ export function tableResizer(event, root) {
       value = coords.height + delta
     }
   }
+
   document.onmouseup = () => {
     $resizer.css({opacity: 0, bottom: 0})
     if (nameOfTarget === 'col') {
@@ -35,3 +36,4 @@ export function tableResizer(event, root) {
     document.onmouseup = null
   }
 }
+
