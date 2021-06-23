@@ -4,7 +4,6 @@ import {HeaderComponent} from '@/components/header/headerComponent'
 import {TableComponent} from '@/components/table/TableComponent'
 import {ToolbarComponent} from '@/components/toolbar/ToolbarComponent'
 import './scss/index.scss'
-
 const excel = new Excel('#app', {
   components: [
     HeaderComponent,

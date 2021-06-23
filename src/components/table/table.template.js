@@ -6,12 +6,13 @@ const CODES = {
 function createCell(count, rowId) {
   const $cell = []
   for (let i = 0; i <= count; i++) {
+    // data-cell-row-id="${rowId}"получаем строчки
     $cell.push(`
-     <div 
-     class="cell" 
-     contenteditable 
+     <div
+     class="cell"
+     contenteditable
      data-cell-col-id="${i}"
-     data-cell-row-id="${rowId}"
+     data-id="${rowId}:${i}"
      ></div>
     `)
   }
@@ -59,7 +60,7 @@ export function createTable(rowsCount = 60) {
   for (let i = 0; i <= rowsCount; i++) {
     i === 0
     ? $rows.push(createRow(null, createCol()))
-    : $rows.push(createRow(i, createCell(colsCount, i)))
+    : $rows.push(createRow(i, createCell(colsCount, i - 1)))
   }
   return $rows.join('')
 }
