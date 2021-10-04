@@ -1,6 +1,6 @@
 import {Excel} from '@/components/excel/Excel'
 import {FormulaComponent} from '@/components/formula/FormulaComponent'
-import {HeaderComponent} from '@/components/header/headerComponent'
+import {HeaderComponent} from '@/components/header/HeaderComponent'
 import {TableComponent} from '@/components/table/TableComponent'
 import {ToolbarComponent} from '@/components/toolbar/ToolbarComponent'
 import './scss/index.scss'
