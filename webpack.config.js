@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const isProd = process.env.NODE_ENV === 'production'
 const isDev = !isProd
 
-const target = isDev ? 'web' : 'browserlist'
+const target = isDev ? 'web' : 'browserslist'
 
 const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`
 
@@ -73,9 +73,6 @@ module.exports = {
             options: {
               presets: ['@babel/preset-env']
             }
-          },
-          isDev && {
-            loader: 'eslint-loader'
           }
         ]
       }
